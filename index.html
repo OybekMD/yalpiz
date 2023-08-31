@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Video Player</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="video-container">
+        <video class="video" id="videoPlayer" src="./video120FPS.mp4" poster="./posterPhoto.jpg" crossorigin="anonymous"></video>
+        <!-- <div class="progress-container" id="progress-container">
+            <div class="played-portion" id="played-portion"></div>
+        </div> -->
+        <div class="video-controls">
+            <button class="play-pause">
+                <i class="fas fa-play" id="playBtnVideo"></i>
+                <i class="fas fa-pause" id="pauseBtnVideo" style="display: none;"></i>
+            </button>
+            <!-- <input class="progress played-portion" type="range" min="0" max="1" step="0.01"> -->
+            <div class="progress-container" id="progress-container">
+                <input class="played-portion" id="played-portion" type="range" min="0" max="1" step="0.01">
+                <!-- <div class="played-portion" id="played-portion"></div> -->
+            </div>
+            <span class="time">00:00</span>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
