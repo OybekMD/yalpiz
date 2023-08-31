@@ -1,3 +1,1 @@
-v0.1
-
-<p>v0.1</p>
+<h1>Yalpiz video player v0.1</h1>
