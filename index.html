@@ -9,21 +9,32 @@
 </head>
 <body>
     <div class="video-container">
-        <video class="video" id="videoPlayer" src="./video120FPS.mp4" poster="./posterPhoto.jpg" crossorigin="anonymous"></video>
-        <!-- <div class="progress-container" id="progress-container">
-            <div class="played-portion" id="played-portion"></div>
-        </div> -->
+        <video class="video" id="videoPlayer" src="../video120FPS.mp4" poster="../posterPhoto.jpg" crossorigin="anonymous"></video>
         <div class="video-controls">
             <button class="play-pause">
                 <i class="fas fa-play" id="playBtnVideo"></i>
                 <i class="fas fa-pause" id="pauseBtnVideo" style="display: none;"></i>
             </button>
-            <!-- <input class="progress played-portion" type="range" min="0" max="1" step="0.01"> -->
             <div class="progress-container" id="progress-container">
                 <input class="played-portion" id="played-portion" type="range" min="0" max="1" step="0.01">
-                <!-- <div class="played-portion" id="played-portion"></div> -->
             </div>
+            <i class="fas fa-cog whf"></i>
+
+            <div id="volume-controls">
+                <!-- <button id="mute-unmute">Mute</button> -->
+                <input id="volume-slider" type="range" min="0" max="1" step="0.1" value="1">
+                <i class="fas fa-volume-mute whf" id="mute" style="display: none;"></i>
+                <i class="fas fa-volume-up whf" id="unmute"></i>
+            </div>
+
+            <!-- <button>
+                <i class="fas fa-volume-up"></i>
+                <i class="fas fa-volume-mute"></i>
+            </button> -->
             <span class="time">00:00</span>
+
+            <!-- video duration -->
+            <span class="time time-end">00:00</span>
         </div>
     </div>
     <script src="scripts.js"></script>
