@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="video-container">
-        <video class="video" id="videoPlayer" src="../video120FPS.mp4" poster="../posterPhoto.jpg" crossorigin="anonymous"></video>
+        <video class="video" id="videoPlayer" src="../video120FPS.mp4" poster="../posterPhoto.jpg" crossorigin="anonymous" controlsList="nodownload"></video>
         <div class="video-controls">
             <button class="play-pause">
                 <i class="fas fa-play" id="playBtnVideo"></i>
@@ -19,13 +19,14 @@
                 <input class="played-portion" id="played-portion" type="range" min="0" max="1" step="0.01">
             </div>
             <i class="fas fa-cog whf"></i>
-
+            
             <div id="volume-controls">
-                <!-- <button id="mute-unmute">Mute</button> -->
-                <input id="volume-slider" type="range" min="0" max="1" step="0.1" value="1">
+                <input id="volume-slider" type="range" min="0" max="1" step="0.1" value="1" style="display: none;">
                 <i class="fas fa-volume-mute whf" id="mute" style="display: none;"></i>
                 <i class="fas fa-volume-up whf" id="unmute"></i>
             </div>
+
+            <i class="fas fa-expand whf" id="fullscren"></i>
 
             <!-- <button>
                 <i class="fas fa-volume-up"></i>

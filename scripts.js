@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const timeTextEnd = document.querySelector(".time-end");
   const playBtnVideo = document.querySelector("#playBtnVideo");
   const pauseBtnVideo = document.querySelector("#pauseBtnVideo");
-  const volumeSlider = document.getElementById('volume-slider');
+  const volumeSlider = document.getElementById("volume-slider");
   // Video volume
-  const unmuteButton = document.getElementById('unmute');
-  const muteButton = document.getElementById('mute');
+  const unmuteButton = document.getElementById("unmute");
+  const muteButton = document.getElementById("mute");
 
   playPauseButton.addEventListener("click", () => {
     if (video.paused) {
@@ -35,46 +35,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Video duration info START - you can delete is if you wont this !
     const endminutes = Math.floor(endtime / 60);
-    const endseconds = Math.floor(endtime % 60).toString().padStart(2, "0");
+    const endseconds = Math.floor(endtime % 60)
+      .toString()
+      .padStart(2, "0");
     timeTextEnd.textContent = `${endminutes}:${endseconds}`;
-    // Video duration info End 
+    // Video duration info End
   });
 
-  
   progressInput.addEventListener("input", () => {
     video.currentTime = progressInput.value * video.duration;
   });
 
+  // Video volume mute and unmute Start
+  unmuteButton.addEventListener("click", () => {
+    unmuteButton.style.display = "none";
+    muteButton.style.display = "block";
+    volumeSlider.value = 0.0;
+    video.volume = 0;
+  });
 
-  // Video volume
-  unmuteButton.addEventListener('click', () => {
-    unmuteButton.style.display = "none"
-    volumeSlider.value = 0
+  muteButton.addEventListener("click", () => {
+    unmuteButton.style.display = "block";
+    muteButton.style.display = "none";
+    volumeSlider.value = 0.5;
+    video.volume = 0.5;
+  });
+  // Video volume mute and unmute End
+
+  // mute and unmute hover input open Start
+  muteButton.addEventListener("mouseover", () =>{
+    volumeSlider.style.display = "block"
   })
 
-  // muteButton.addEventListener('click', () => {
-  //   if (!video.muted) {
-  //     video.muted = true;
-  //     muteButton.textContent = 'Unmute';
-  //   } else {
-  //     video.muted = false;
-  //     muteButton.textContent = 'Mute';
-  //   }
-  // });
+  unmuteButton.addEventListener("mouseover", () =>{
+    volumeSlider.style.display = "block"
+  })
 
-  volumeSlider.addEventListener('input', () => {
+  volumeSlider.addEventListener("mouseout", () => {
+    volumeSlider.style.display = "none"
+  })
+  // mute and unmute hover input open End
+
+  volumeSlider.addEventListener("input", () => {
     video.volume = volumeSlider.value;
-    console.log(Math.floor(video.volume * 10) == 0);
     // if (Math.floor(video.muted * 10) == 0) {
     if (Math.floor(video.volume * 10) == 0) {
       video.muted = false;
       // muteButton.textContent = 'v0';
-      muteButton.style.display = "inline-block"
-      unmuteButton.style.display = "none"
+      muteButton.style.display = "inline-block";
+      unmuteButton.style.display = "none";
     } else {
-      muteButton.style.display = "none"
-      unmuteButton.style.display = "inline-block"
+      muteButton.style.display = "none";
+      unmuteButton.style.display = "inline-block";
     }
   });
 
+  // Fullscren Start
+  const fullScreen = document.getElementById("fullscren")
+  fullScreen.addEventListener('click', function() {
+    if (video.requestFullscreen) {
+        video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) { // Firefox
+        video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) { // Chrome, Safari (webkit)
+        video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { // IE/Edge
+        video.msRequestFullscreen();
+    }
+});
+  // Fullscren End
 });

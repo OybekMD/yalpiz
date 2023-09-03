@@ -97,20 +97,34 @@ body {
 }
 
 /* Volume input Start */
+
+#mute {
+    padding: 10px;
+}
+#unmute {
+    padding: 10px;
+}
+
 #volume-controls {
     display: flex;
     flex-direction: column;
     text-align: center;
-    /* width: 30%; */
-    margin-bottom: 100px;
+    vertical-align: middle;
+    align-items: center;
+    padding: 0px 20px;
 }
 
 #volume-slider {
-    position: relative;
     appearance: slider-vertical;
     height: 6.25rem;
-    width: 3rem;
+    width: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin:0 145px 55px 0;
 }
+
+
 
 /* Volume input End */
 
@@ -120,3 +134,10 @@ body {
 }
 
 /* Color system End */
+
+
+/* Main settings Start*/
+input{
+    border: none;
+}
+/* Main settings End*/
