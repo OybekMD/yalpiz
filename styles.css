@@ -101,32 +101,42 @@ body {
 #mute {
     padding: 10px;
 }
+
 #unmute {
     padding: 10px;
 }
 
 #volume-controls {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     text-align: center;
     vertical-align: middle;
     align-items: center;
-    padding: 0px 20px;
+}
+
+.volume-bigslider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
 }
 
 #volume-slider {
+    position: fixed;
     appearance: slider-vertical;
     height: 6.25rem;
     width: 20px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin:0 145px 55px 0;
+    height: 100px;
+    bottom: 80px;
+}
+/* Volume input End */
+
+#fullscren {
+    padding: 10px;
 }
 
-
-
-/* Volume input End */
+#settings {
+    padding: 10px;
+}
 
 /* Color system Start */
 .whf {
@@ -137,7 +147,8 @@ body {
 
 
 /* Main settings Start*/
-input{
+input {
     border: none;
 }
+
 /* Main settings End*/
