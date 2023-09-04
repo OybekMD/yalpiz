@@ -63,17 +63,17 @@ document.addEventListener("DOMContentLoaded", function () {
   // Video volume mute and unmute End
 
   // mute and unmute hover input open Start
-  muteButton.addEventListener("mouseover", () =>{
-    volumeSlider.style.display = "block"
-  })
+  muteButton.addEventListener("mouseover", () => {
+    volumeSlider.style.display = "block";
+  });
 
-  unmuteButton.addEventListener("mouseover", () =>{
-    volumeSlider.style.display = "block"
-  })
+  unmuteButton.addEventListener("mouseover", () => {
+    volumeSlider.style.display = "block";
+  });
 
   volumeSlider.addEventListener("mouseout", () => {
-    volumeSlider.style.display = "none"
-  })
+    volumeSlider.style.display = "none";
+  });
   // mute and unmute hover input open End
 
   volumeSlider.addEventListener("input", () => {
@@ -91,17 +91,44 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Fullscren Start
-  const fullScreen = document.getElementById("fullscren")
-  fullScreen.addEventListener('click', function() {
+  const fullScreen = document.getElementById("fullscren");
+  fullScreen.addEventListener("click", function () {
     if (video.requestFullscreen) {
-        video.requestFullscreen();
-    } else if (video.mozRequestFullScreen) { // Firefox
-        video.mozRequestFullScreen();
-    } else if (video.webkitRequestFullscreen) { // Chrome, Safari (webkit)
-        video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) { // IE/Edge
-        video.msRequestFullscreen();
+      video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) {
+      // Firefox
+      video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) {
+      // Chrome, Safari (webkit)
+      video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) {
+      // IE/Edge
+      video.msRequestFullscreen();
     }
-});
+  });
   // Fullscren End
+
+  // Spend video time Start
+  document.addEventListener("keydown", function (event) {
+    if (event.code === "ArrowRight") {
+      video.currentTime += 5; // Skip forward 5 seconds
+    }
+    if (event.code === "ArrowLeft") {
+      video.currentTime -= 5; // Skip forward 5 seconds
+    }
+    if (event.code === "Space") {
+      if (video.paused) {
+        video.play();
+        playBtnVideo.style.display = "none";
+        pauseBtnVideo.style.display = "block";
+      } else {
+        video.pause();
+        playBtnVideo.style.display = "block";
+        pauseBtnVideo.style.display = "none";
+      }
+      // Prevent browsers' default spacebar behavior (e.g., page scrolling)
+      event.preventDefault();
+    }
+  });
+  // Spend video time End
 });

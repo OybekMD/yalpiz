@@ -35,7 +35,6 @@ body {
     border: none;
     color: white;
     font-size: 1.2em;
-    padding: 0;
     margin-left: 15px;
     cursor: pointer;
     margin-right: 10px;
@@ -61,6 +60,7 @@ body {
 #playBtnVideo {
     padding: 10px 22px;
     border-radius: 5px;
+    width: 15px;
 }
 
 #playBtnVideo:hover {
@@ -70,6 +70,7 @@ body {
 #pauseBtnVideo {
     padding: 10px 22px;
     border-radius: 5px;
+    width: 15px;
 }
 
 #pauseBtnVideo:hover {
