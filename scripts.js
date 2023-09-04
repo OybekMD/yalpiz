@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const video = document.querySelector(".video");
+  let video = document.querySelector(".video");
   const playPauseButton = document.querySelector(".play-pause");
   const progressInput = document.querySelector(".played-portion");
   const timeText = document.querySelector(".time");
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
   muteButton.addEventListener("click", () => {
     unmuteButton.style.display = "block";
     muteButton.style.display = "none";
-    volumeSlider.value = 0.5;
+    volumeSlider.value = 5;
     video.volume = 0.5;
   });
   // Video volume mute and unmute End
@@ -109,6 +109,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fullscren End
 
   // Spend video time Start
+  function showVolumeKeydown() {
+    volumeSlider.style.display = "block";
+    setTimeout(() => {
+      volumeSlider.style.display = "none";
+    }, 4000);
+  }
+
   document.addEventListener("keydown", function (event) {
     if (event.code === "ArrowRight") {
       video.currentTime += 5; // Skip forward 5 seconds
@@ -128,6 +135,31 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       // Prevent browsers' default spacebar behavior (e.g., page scrolling)
       event.preventDefault();
+    }
+
+    if (event.code === "ArrowUp") {
+      const currentValue = parseInt(volumeSlider.value);
+      const newValue = currentValue + 1;
+      volumeSlider.value = newValue;
+      video.volume = volumeSlider.value / 10;
+      console.log(volumeSlider.value + " volumeSlider.value");
+      console.log(video.volume + " video.volume");
+      showVolumeKeydown();
+      unmuteButton.style.display = "block";
+      muteButton.style.display = "none";
+      // Increase the volume
+    }
+    if (event.code === "ArrowDown") {
+      // Decrease the volume
+      volumeSlider.value = volumeSlider.value - 1;
+      video.volume = volumeSlider.value / 10;
+      showVolumeKeydown();
+      console.log(volumeSlider.value + " volumeSlider.value");
+      console.log(video.volume + " video.volume");
+      if (video.volume == 0) {
+        unmuteButton.style.display = "none";
+        muteButton.style.display = "block";
+      }
     }
   });
   // Spend video time End
