@@ -22,6 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
       pauseBtnVideo.style.display = "none";
     }
   });
+  
+  video.addEventListener("click", function () {
+    if (video.paused) {
+      video.play();
+      playBtnVideo.style.display = "none";
+      pauseBtnVideo.style.display = "block";
+    } else {
+      video.pause();
+      playBtnVideo.style.display = "block";
+      pauseBtnVideo.style.display = "none";
+    }
+  });
 
   video.addEventListener("timeupdate", () => {
     progressInput.value = video.currentTime / video.duration;
@@ -92,7 +104,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Fullscren Start
   const fullScreen = document.getElementById("fullscren");
+
+  // Button click full scren
   fullScreen.addEventListener("click", function () {
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) {
+      // Firefox
+      video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) {
+      // Chrome, Safari (webkit)
+      video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) {
+      // IE/Edge
+      video.msRequestFullscreen();
+    }
+  });
+  // Video double click then Full scren 
+  video.addEventListener("dblclick", function () {
     if (video.requestFullscreen) {
       video.requestFullscreen();
     } else if (video.mozRequestFullScreen) {
