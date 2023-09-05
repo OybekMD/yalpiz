@@ -129,6 +129,7 @@ body {
     height: 100px;
     bottom: 80px;
 }
+
 /* Volume input End */
 
 #fullscren {
@@ -146,6 +147,65 @@ body {
 
 /* Color system End */
 
+
+/* Info show Settings Start */
+.info-show-settings {
+    display: flex;
+    justify-content: space-between;
+    z-index: 99;
+    position: fixed;
+    width: 80%;
+    top: 40%;
+}
+
+.info-show-settings span {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#info-show-settings-left5 {
+    background-color: #1212127a;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    line-height: 100px;
+    text-align: center;
+    color: #fff;
+
+    opacity: 0;
+}
+
+#info-show-settings-stop {
+    background-color: #1212127a;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+
+    opacity: 0;
+}
+
+#info-show-settings-stop i {
+    font-size: 40px;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+#info-show-settings-right5 {
+    background-color: #1212127a;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    line-height: 100px;
+    text-align: center;
+    color: #fff;
+
+    opacity: 0;
+}
+
+/* Info show Settings End */
 
 /* Main settings Start*/
 input {

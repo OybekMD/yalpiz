@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let video = document.querySelector(".video");
+  const video = document.querySelector(".video");
   const playPauseButton = document.querySelector(".play-pause");
   const progressInput = document.querySelector(".played-portion");
   const timeText = document.querySelector(".time");
@@ -11,18 +11,60 @@ document.addEventListener("DOMContentLoaded", function () {
   const unmuteButton = document.getElementById("unmute");
   const muteButton = document.getElementById("mute");
 
+  // Video spend elements
+  const fiveSecondLeft = document.getElementById("info-show-settings-left5");
+  const fiveSecondRight = document.getElementById("info-show-settings-right5");
+  const pausePlayMiddleVideoSC = document.getElementById(
+    "info-show-settings-stop"
+  );
+  const pausePlayMiddleVideoPlay = document.getElementById("playBtnVideoShow");
+  const pausePlayMiddleVideoPause =
+    document.getElementById("pauseBtnVideoShow");
+
+  function showPlay() {
+    pausePlayMiddleVideoSC.style.opacity = "1";
+    pausePlayMiddleVideoPlay.style.display = "block";
+    setTimeout(() => {
+      pausePlayMiddleVideoSC.style.opacity = "0";
+      pausePlayMiddleVideoPlay.style.display = "none";
+    }, 100);
+  }
+  function showPause() {
+    pausePlayMiddleVideoSC.style.opacity = "1";
+    pausePlayMiddleVideoPause.style.display = "block";
+    setTimeout(() => {
+      pausePlayMiddleVideoSC.style.opacity = "0";
+      pausePlayMiddleVideoPause.style.display = "none";
+    }, 100);
+  }
+
+  function showLeft() {
+    fiveSecondLeft.style.opacity = "1";
+    setTimeout(() => {
+      fiveSecondLeft.style.opacity = "0";
+    }, 200);
+  }
+  function showRight() {
+    fiveSecondRight.style.opacity = "1";
+    setTimeout(() => {
+      fiveSecondRight.style.opacity = "0";
+    }, 200);
+  }
+
   playPauseButton.addEventListener("click", () => {
     if (video.paused) {
       video.play();
+      showPlay();
       playBtnVideo.style.display = "none";
       pauseBtnVideo.style.display = "block";
     } else {
       video.pause();
+      showPause();
       playBtnVideo.style.display = "block";
       pauseBtnVideo.style.display = "none";
     }
   });
-  
+
   video.addEventListener("click", function () {
     if (video.paused) {
       video.play();
@@ -120,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
       video.msRequestFullscreen();
     }
   });
-  // Video double click then Full scren 
+  // Video double click then Full scren
   video.addEventListener("dblclick", function () {
     if (video.requestFullscreen) {
       video.requestFullscreen();
@@ -146,19 +188,37 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   document.addEventListener("keydown", function (event) {
+    if (event.code === "Enter") {
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.mozRequestFullScreen) {
+        // Firefox
+        video.mozRequestFullScreen();
+      } else if (video.webkitRequestFullscreen) {
+        // Chrome, Safari (webkit)
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        // IE/Edge
+        video.msRequestFullscreen();
+      }
+    }
     if (event.code === "ArrowRight") {
       video.currentTime += 5; // Skip forward 5 seconds
+      showRight();
     }
     if (event.code === "ArrowLeft") {
       video.currentTime -= 5; // Skip forward 5 seconds
+      showLeft();
     }
     if (event.code === "Space") {
       if (video.paused) {
         video.play();
+        showPlay();
         playBtnVideo.style.display = "none";
         pauseBtnVideo.style.display = "block";
       } else {
         video.pause();
+        showPause();
         playBtnVideo.style.display = "block";
         pauseBtnVideo.style.display = "none";
       }
